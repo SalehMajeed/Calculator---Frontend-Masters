@@ -8,6 +8,13 @@ function display(event) {
     if (button_value == 'C') {
         display_screen.innerText = '0';
     }
+    if (button_value == '←') {
+        if (display_screen.innerText.length == 1) {
+            display_screen.innerText = '0';
+        } else {
+            display_screen.innerText = display_screen.innerText.slice(0, -1);
+        }
+    }
     if (button_value == '=') {
         let value_equal = eval(display_screen.innerText);
         display_screen.innerText = value_equal;
