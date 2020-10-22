@@ -14,6 +14,12 @@ function display(event) {
         display_screen.innerText = '0';
     }
     if (button_value == '←') {
+        if (flag == true) {
+            disabled_button[0].removeAttribute('disabled');
+            disabled_button[1].removeAttribute('disabled');
+            disabled_button[2].removeAttribute('disabled');
+            disabled_button[3].removeAttribute('disabled');
+        }
         if (display_screen.innerText.length == 1) {
             display_screen.innerText = '0';
         } else {
@@ -21,6 +27,25 @@ function display(event) {
         }
     }
     if (button_value == '=') {
+        if (
+            display_screen.innerText.length > 1 &&
+            (display_screen.innerText[display_screen.innerText.length - 1] ==
+                '×' ||
+                display_screen.innerText[display_screen.innerText.length - 1] ==
+                    '÷' ||
+                display_screen.innerText[display_screen.innerText.length - 1] ==
+                    '-' ||
+                display_screen.innerText[display_screen.innerText.length - 1] ==
+                    '+')
+        ) {
+            display_screen.innerText = display_screen.innerText.slice(0, -1);
+            if (flag == true) {
+                disabled_button[0].removeAttribute('disabled');
+                disabled_button[1].removeAttribute('disabled');
+                disabled_button[2].removeAttribute('disabled');
+                disabled_button[3].removeAttribute('disabled');
+            }
+        }
         display_screen.innerText = display_screen.innerText.replaceAll(
             '×',
             '*'
@@ -29,7 +54,6 @@ function display(event) {
             '÷',
             '/'
         );
-
         let value_equal = eval(display_screen.innerText);
         display_screen.innerText = value_equal;
     }
