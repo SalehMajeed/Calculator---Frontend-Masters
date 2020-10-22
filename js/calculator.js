@@ -17,6 +17,7 @@ function display(event) {
     }
     if (button_value == '=') {
         display_screen.innerText = display_screen.innerText.replaceAll('×','*')
+        display_screen.innerText = display_screen.innerText.replaceAll('÷','/')
 
         let value_equal = eval(display_screen.innerText);
         display_screen.innerText = value_equal;
