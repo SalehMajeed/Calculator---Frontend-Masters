@@ -1,20 +1,20 @@
-const button = document.querySelector('.calc-buttons');
+const button = document.querySelector('.calc-buttons'); // use id
 const display_screen = document.querySelector('.screen');
-const cases = document.querySelectorAll('.special_cases');
+const cases = document.querySelectorAll('.special_cases'); // change to operators
 
 let flag = false;
-let disabled_button = cases;
+let disabled_button = cases; // use cases instead
 
 button.addEventListener('click', display);
 
 function display(event) {
     const button_value = event.target.innerText;
 
-    if (button_value == 'C') {
+    if (button_value == 'C') { // Use else if Or better use Switch
         display_screen.innerText = '0';
     }
     if (button_value == '←') {
-        if (flag == true) {
+        if (flag == true) { // use map
             disabled_button[0].removeAttribute('disabled');
             disabled_button[1].removeAttribute('disabled');
             disabled_button[2].removeAttribute('disabled');
