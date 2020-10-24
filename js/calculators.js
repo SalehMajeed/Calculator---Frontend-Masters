@@ -17,7 +17,7 @@ function calculation(event) {
             display.innerText = '0';
             break;
         case '←':
-            console.log(button_value);
+            remove_value();
             break;
         case '=':
             console.log(button_value);
@@ -32,6 +32,14 @@ function calculation(event) {
 }
 
 function feed_value(button_value) {
-    if (display.innerText == '0') display.innerText = ''
+    if (display.innerText == '0') display.innerText = '';
     display.append(button_value);
+}
+
+function remove_value() {
+    if (display.innerText.length <= 1) {
+        display.innerText = '0';
+        return;
+    }
+    display.innerText = display.innerText.slice(0, -1);
 }
