@@ -1,4 +1,5 @@
 const calculator = document.getElementById('calculator');
+const display = document.getElementById('display_screen');
 
 calculator.addEventListener('click', calculation);
 
@@ -10,10 +11,10 @@ function calculation(event) {
     else if (button_value == '÷') operators = '÷';
     else if (button_value == '×') operators = '×';
     else if (button_value == '-') operators = '-';
-    
+
     switch (button_value) {
         case 'C':
-            console.log(button_value);
+            display.innerText = '0';
             break;
         case '←':
             console.log(button_value);
@@ -25,7 +26,12 @@ function calculation(event) {
             console.log(button_value);
             break;
         default:
-            console.log(button_value);
+            feed_value(button_value);
             break;
     }
+}
+
+function feed_value(button_value) {
+    if (display.innerText == '0') display.innerText = ''
+    display.append(button_value);
 }
