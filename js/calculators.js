@@ -20,7 +20,7 @@ function calculation(event) {
             remove_value();
             break;
         case '=':
-            console.log(button_value);
+            equal_button(operators)
             break;
         case operators:
             console.log(button_value);
@@ -42,4 +42,11 @@ function remove_value() {
         return;
     }
     display.innerText = display.innerText.slice(0, -1);
+}
+
+function equal_button(operators){
+    let evaluate_result = display.innerText
+    if (evaluate_result[evaluate_result.length - 1 == operators]){
+
+    }
 }
