@@ -26,7 +26,7 @@ function calculation(event) {
       equal_button(operators);
       break;
     case operators:
-      console.log(button_value);
+      feed_value(button_value);
       break;
     default:
       feed_value(button_value);
@@ -49,6 +49,7 @@ function remove_value() {
 
 function equal_button(operators) {
   let evaluate_result = display.innerText;
-  if (evaluate_result[evaluate_result.length - 1 == operators]) {
-  }
+  let last_element = display.innerText.length - 1;
+  if (!Number(evaluate_result[last_element]))
+    display.innerText = evaluate_result.slice(0, -1);
 }
