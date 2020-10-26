@@ -5,6 +5,8 @@ const operator_array = document.querySelectorAll('.operator_symbol');
 calculator.addEventListener('click', calculation);
 
 function calculation(event) {
+  if (event.target.innerText.length > 1) return;
+
   const button_value = event.target.innerText;
   let operators;
 
@@ -71,7 +73,7 @@ function loop_nodelist(list, type) {
     for (let i = 0; i < list.length; i++) {
       list[i].setAttribute('disabled', 'disabled');
     }
-  if (type == 'number')
+  else if (type == 'number')
     for (let i = 0; i < list.length; i++) {
       list[i].removeAttribute('disabled', 'disabled');
     }
