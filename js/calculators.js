@@ -50,6 +50,10 @@ function remove_value() {
 function equal_button(operators) {
   let evaluate_result = display.innerText;
   let last_element = display.innerText.length - 1;
+
   if (!Number(evaluate_result[last_element]))
     display.innerText = evaluate_result.slice(0, -1);
+
+  evaluate_result = evaluate_result.replaceAll('×', '*').replaceAll('÷', '/');
+  display.innerText = eval(evaluate_result);
 }
