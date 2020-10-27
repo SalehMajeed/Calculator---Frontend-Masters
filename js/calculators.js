@@ -5,10 +5,14 @@ const operator_array = document.querySelectorAll('.operator_symbol');
 calculator.addEventListener('click', calculation);
 
 function calculation(event) {
-  if (event.target.innerText.length > 1) return;
+  if (event.target.tagName.trim().toLowerCase() != 'button') {
+    return false;
+  }
+
+  display.innerText = display.innerText.trim();
 
   const button_value = event.target.innerText;
-  let operators;
+  let operator;
 
   if (
     button_value == '+' ||
@@ -16,7 +20,7 @@ function calculation(event) {
     button_value == '×' ||
     button_value == '-'
   ) {
-    operators = button_value;
+    operator = button_value; // use array and includes function
   }
 
   switch (button_value) {
@@ -29,7 +33,7 @@ function calculation(event) {
     case '=':
       equal_button();
       break;
-    case operators:
+    case operator:
       loop_nodelist(operator_array, 'symbol');
       feed_value(button_value);
       break;
@@ -71,7 +75,7 @@ function equal_button() {
 function loop_nodelist(list, type) {
   if (type == 'symbol')
     for (let i = 0; i < list.length; i++) {
-      list[i].setAttribute('disabled', 'disabled');
+      list[i].setAttribute('disabled', 'disabled'); //list[i].disabled = true
     }
   else if (type == 'number')
     for (let i = 0; i < list.length; i++) {
